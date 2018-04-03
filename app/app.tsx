@@ -10,8 +10,6 @@ const state = new AppState()
 export class App extends React.Component<{}> {
     render() {
         return <div>
-            <h1>App!</h1>
-            <Hello compiler="TypeScript" framework="React" />
             <WeatherForecast state={state} />
             <DevTools />
         </div>;
