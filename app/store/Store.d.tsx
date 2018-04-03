@@ -61,7 +61,9 @@
   }
 
   export interface CityRequest {
+    id: number,
     name: string,
+    country: string,
     temp: number,
     coord: Cord
   }

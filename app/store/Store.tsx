@@ -83,6 +83,10 @@ export class AppState {
     }
   }
 
+  getCityWithTemperature(city: City, temp: number): CityRequest {
+    return {...city, temp: temp};
+  }
+
   @action async fetchWeather(cityId: number) {
     this.state = "pending"
     try {
@@ -97,6 +101,7 @@ export class AppState {
       runInAction(() => {
           this.state = "done";
           this.weather = weather;
+
       })
     } catch (error) {
       runInAction(() => {
