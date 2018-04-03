@@ -5,7 +5,7 @@ import {BASE_URL, FETCH_CITIES_URL, WEATHER_API_KEY, POST_URL} from '../config/c
 
 
 const START_SEARCH: number = 2;
-const MAX_SEARCH_ARR_SIZE: number = 10;
+const MAX_SEARCH_ARR_SIZE: number = 30;
 
 export class AppState {
   @observable weather: WeatherFull;
@@ -15,7 +15,6 @@ export class AppState {
 
 
   constructor(initData?: WeatherFull) {
-    this.searchInput = '';
     this.state = 'pending';
   }
 
@@ -44,16 +43,20 @@ export class AppState {
     }    
 
     const createEntriesArr = (arr:City[], input:string, filterFunc: Function):City[] => arr.filter(c => filterFunc(c, input));
-    
+    console.log([...new Set([
+      ...createEntriesArr(this.cities, this.searchInput, strongCondition), 
+      ...createEntriesArr(this.cities, this.searchInput, lightCondition)
+    ])].slice(0, 20));
+    // return this.cities;
     return [...new Set([
       ...createEntriesArr(this.cities, this.searchInput, strongCondition), 
       ...createEntriesArr(this.cities, this.searchInput, lightCondition)
-    ])]; // union of two arrays cuz entries can repeat
+    ])].slice(0, MAX_SEARCH_ARR_SIZE); // union of two arrays cuz entries can repeat
 
   }
 
   @computed get entriesList() {
-    if(this.searchInput.length < START_SEARCH) {
+    if(!this.searchInput || this.searchInput.length < START_SEARCH) {
       return [];
     }
     return this.autocomplete();
