@@ -20,6 +20,7 @@ export class WeatherForecast extends React.Component<{state: AppState}, {}> {
           dataSource={this.props.state.entriesList}
           onUpdateInput={value => this.props.state.updateSearchInputVal(value)}
           dataSourceConfig={dataSourceConfig}
+          onNewRequest={(value, idx) => this.props.state.fetchWeather(value.id)} //
       />
 
       </MuiThemeProvider>

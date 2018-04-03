@@ -93,7 +93,7 @@ export class AppState {
   @action async fetchWeather(cityId: number) {
     this.state = "pending"
     try {
-      const res = await fetch(FETCH_CITIES_URL+`id=${cityId}&units=metric&APPID=${WEATHER_API_KEY}`);
+      const res = await fetch(BASE_URL+`id=${cityId}&units=metric&APPID=${WEATHER_API_KEY}`);
       
       if (res.status >= 400) {
         throw new Error("Bad response from server");
