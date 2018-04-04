@@ -15,6 +15,7 @@ const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
   dist: path.join(__dirname, 'dist'),
+  docs: path.join(__dirname, 'docs'),
   nodeModules: path.join(__dirname, 'node_modules')
 };
 
@@ -126,7 +127,7 @@ if(TARGET === 'serve' || TARGET === 'serve-local' ||  !TARGET) {
 if(TARGET === 'build' || TARGET === "ci:prepare") {
   module.exports = merge(common, {
     output: {
-      path: PATHS.dist,
+      path: PATHS.docs,
       filename: 'bundle.[hash].js',
       chunkFilename: 'bundle.[hash].js',
       publicPath: '/'
