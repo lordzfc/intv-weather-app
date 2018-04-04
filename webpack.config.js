@@ -14,6 +14,7 @@ const TARGET = process.env.npm_lifecycle_event;
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
+  dist: path.join(__dirname, 'dist'),
   nodeModules: path.join(__dirname, 'node_modules')
 };
 
@@ -125,7 +126,7 @@ if(TARGET === 'serve' || TARGET === 'serve-local' ||  !TARGET) {
 if(TARGET === 'build' || TARGET === "ci:prepare") {
   module.exports = merge(common, {
     output: {
-      path: PATHS.build,
+      path: PATHS.dist,
       filename: 'bundle.[hash].js',
       chunkFilename: 'bundle.[hash].js',
       publicPath: '/'
