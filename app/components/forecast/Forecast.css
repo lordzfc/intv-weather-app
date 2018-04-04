@@ -1,3 +1,6 @@
 :local(.componentsTitle) {
   margin-top: 20px;
 }
+:local(.weatherLabel) {
+  font-weight: bold;
+}

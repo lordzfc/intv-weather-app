@@ -12,9 +12,8 @@ export class ForecastCont extends React.Component<ForecastContProps, {}> {
     if(this.props.weather) {
       weather = (
         <React.Fragment>
-          <h3 className={styles.componentsTitle}> Forecast </h3>
-          {this.props.weather.list.map(
-            (e)=><ForecastTile key={e.dt} weatherPeriod={e}/>
+          {this.props.weather.list.slice(0,10).map(
+            (e)=><ForecastTile key={e.dt} weatherPeriod={e} city={this.props.weather.city.name}/>
           )}
         </React.Fragment>
       )

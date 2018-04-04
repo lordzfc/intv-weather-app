@@ -13,7 +13,7 @@
     weather: Weather[];
     clouds: Clouds;
     wind: Wind;
-    rain: Rain;
+    rain: any;
     sys: Sys;
     dt_txt: string;
   }
@@ -47,6 +47,7 @@
   }
 
   interface Rain {
+
   }
 
   interface Sys {
