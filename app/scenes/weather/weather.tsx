@@ -4,6 +4,7 @@ import {AppState} from '../../store/Store';
 import * as styles from './Weather.css';
 import AppBar from 'material-ui/AppBar';
 import AutoComplete from 'material-ui/AutoComplete';
+import {ForecastCont} from '../../components/forecast/forecast-cont';
 
 
 const dataSourceConfig = {
@@ -27,6 +28,7 @@ export class WeatherForecast extends React.Component<{state: AppState}, {}> {
               onNewRequest={(value, idx) => this.props.state.fetchWeather(value.id)}
               fullWidth={true}
           />
+          <ForecastCont weather={this.props.state.weather} /> 
         </div>
 
       </div>
