@@ -1,3 +1,8 @@
 :local(.weather) {
   text-align: center;
 }
+:local(.contentCont) {
+  margin-top: 30px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
