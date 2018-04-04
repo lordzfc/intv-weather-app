@@ -1,4 +1,4 @@
-// [AIV]  Build Wednesday, April 4th, 2018, 9:23:20 AM - commithash - "f0170aa8db3e89dca5dbf5a5f89ea3ac5d6eb885" - branch - "gh-pages"  
+// [AIV]  Build Wednesday, April 4th, 2018, 9:54:21 AM - commithash - "c671fa5af848ab0feb26bee9e88d65ee0cde21d7" - branch - "gh-pages"  
  /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -27460,8 +27460,6 @@ var AppState = /** @class */ (function () {
             return true;
         };
         var createEntriesArr = function (arr, input, filterFunc) { return arr.filter(function (c) { return filterFunc(c, input); }); };
-        console.log(__spread(new Set(__spread(createEntriesArr(this.cities, this.searchInput, strongCondition), createEntriesArr(this.cities, this.searchInput, lightCondition)))).slice(0, 20));
-        // return this.cities;
         return __spread(new Set(__spread(createEntriesArr(this.cities, this.searchInput, strongCondition), createEntriesArr(this.cities, this.searchInput, lightCondition)))).slice(0, MAX_SEARCH_ARR_SIZE); // union of two arrays cuz entries can repeat
     };
     Object.defineProperty(AppState.prototype, "entriesList", {
@@ -27555,6 +27553,7 @@ var AppState = /** @class */ (function () {
     AppState.prototype.postCity = function (city) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
+                console.log(JSON.stringify(city));
                 return [2 /*return*/, fetch(constants_1.POST_URL, {
                         method: 'POST',
                         body: JSON.stringify(city),
@@ -27611,8 +27610,8 @@ exports.AppState = AppState;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WEATHER_API_KEY = "fdd8a1dd8b40a3e7344c0665a7e2598e";
 exports.FETCH_CITIES_URL = 'https://api.myjson.com/bins/105h5n'; // 'https://api.myjson.com/bins/1ah40j';
-exports.BASE_URL = 'http://api.openweathermap.org/data/2.5/forecast?';
-exports.POST_URL = 'http://myjson.com/api';
+exports.BASE_URL = 'https://api.openweathermap.org/data/2.5/forecast?';
+exports.POST_URL = 'https://myjson.com/api';
 
 
 /***/ }),
@@ -33952,10 +33951,13 @@ var WeatherForecast = /** @class */ (function (_super) {
     }
     WeatherForecast.prototype.render = function () {
         var _this = this;
+        var postCity = this.props.state.postCity;
+        var createCityObj = this.props.state.getCityWithTemperature;
         return (React.createElement("div", { className: styles.weather },
             React.createElement(AppBar_1.default, { title: "" }),
             React.createElement("div", { className: styles.contentCont },
-                React.createElement(AutoComplete_1.default, { hintText: "Type city, i.e. Warszawa", dataSource: this.props.state.entriesList, onUpdateInput: function (value) { return _this.props.state.updateSearchInputVal(value); }, dataSourceConfig: dataSourceConfig, onNewRequest: function (value, idx) { return _this.props.state.fetchWeather(value.id); }, fullWidth: true }),
+                React.createElement(AutoComplete_1.default, { hintText: "Type city, i.e. Warszawa", dataSource: this.props.state.entriesList, onUpdateInput: function (value) { return _this.props.state.updateSearchInputVal(value); }, dataSourceConfig: dataSourceConfig, onNewRequest: function (value, idx) { return _this.props.state.fetchWeather(value.id)
+                        .then(function () { return postCity(createCityObj(_this.props.state.weather.city, _this.props.state.weather.list[0].main.temp)); }); }, fullWidth: true }),
                 React.createElement(forecast_cont_1.ForecastCont, { weather: this.props.state.weather }))));
     };
     WeatherForecast.prototype.componentDidMount = function () {
