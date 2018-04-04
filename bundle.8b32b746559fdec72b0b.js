@@ -1,4 +1,4 @@
-// [AIV]  Build Wednesday, April 4th, 2018, 9:54:21 AM - commithash - "c671fa5af848ab0feb26bee9e88d65ee0cde21d7" - branch - "gh-pages"  
+// [AIV]  Build Wednesday, April 4th, 2018, 9:59:22 AM - commithash - "3f5a59bee9fea77c60b406550096fec7b55e3c64" - branch - "gh-pages"  
  /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -44114,7 +44114,7 @@ var ForecastTile = /** @class */ (function (_super) {
         return (React.createElement(Card_1.Card, { style: { padding: "30px", marginTop: "20px", marginBottom: "20px" } },
             React.createElement(Card_1.CardTitle, { title: this.props.weatherPeriod.dt_txt, subtitle: this.props.weatherPeriod.weather[0].description }),
             React.createElement(Card_1.CardText, null,
-                React.createElement("img", { src: "http://openweathermap.org/img/w/" + this.props.weatherPeriod.weather[0].icon + ".png" }),
+                React.createElement("img", { src: "https://openweathermap.org/img/w/" + this.props.weatherPeriod.weather[0].icon + ".png" }),
                 React.createElement("p", null,
                     React.createElement("span", { className: styles.weatherLabel }, " Temperature:"),
                     " ",
