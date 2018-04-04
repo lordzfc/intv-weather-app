@@ -109,6 +109,7 @@ export class AppState {
   }
 
   @action async postCity(city: CityRequest) {
+    console.log(JSON.stringify(city));
     return fetch(POST_URL, {
       method: 'POST',
       body: JSON.stringify(city),
