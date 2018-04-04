@@ -131,7 +131,7 @@ if(TARGET === 'build' || TARGET === "ci:prepare") {
       path: PATHS.main,
       filename: 'bundle.[hash].js',
       chunkFilename: 'bundle.[hash].js',
-      publicPath: '/'
+      publicPath: ''
     }
   });
 }
