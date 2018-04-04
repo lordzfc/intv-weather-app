@@ -43,11 +43,6 @@ export class AppState {
     }    
 
     const createEntriesArr = (arr:City[], input:string, filterFunc: Function):City[] => arr.filter(c => filterFunc(c, input));
-    console.log([...new Set([
-      ...createEntriesArr(this.cities, this.searchInput, strongCondition), 
-      ...createEntriesArr(this.cities, this.searchInput, lightCondition)
-    ])].slice(0, 20));
-    // return this.cities;
     return [...new Set([
       ...createEntriesArr(this.cities, this.searchInput, strongCondition), 
       ...createEntriesArr(this.cities, this.searchInput, lightCondition)
